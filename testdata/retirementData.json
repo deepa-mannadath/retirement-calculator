@@ -1,0 +1,32 @@
+{
+  "requiredFields": {
+    "currentAge": "30",
+    "retirementAge": "65",
+    "income": "100000",
+    "totalSavings": "10000",
+    "annualSavings": "4",
+    "savingsRate": "2"
+  },
+  "socialSecurity": {
+    "enabled": true,
+    "disabled": false
+  },
+  "allFields": {
+    "currentAge": "30",
+    "retirementAge": "65",
+    "income": "100000",
+    "totalSavings": "10000",
+    "spouseIncome": "10000",
+    "annualSavings": "4",
+    "savingsIncreaseRate": "2",
+    "socialSecurityOverride": "2000"
+  },
+   "defaultValues": {
+    "additionalIncome": "1000",
+    "retirementDuration": "25",
+    "annualRetirementIncome": "80",
+    "preRetirementRoi": "80",
+    "postRetirementRoi": "5"
+  }
+
+}
