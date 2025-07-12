@@ -1,15 +1,10 @@
 {
   "name": "securian",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
-  },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "test": "wdio run wdio.conf.js"
+  },
   "devDependencies": {
     "@wdio/cli": "^9.16.2",
     "@wdio/cucumber-framework": "^9.16.2",

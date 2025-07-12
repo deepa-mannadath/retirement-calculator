@@ -6,9 +6,8 @@ AfterStep(async function (stepResult) {
   const step = stepResult.pickle.steps[this.__currentStepIndex || 0];
   const stepText = step.text.replace(/\s+/g, '_');
   const scenarioName = stepResult.pickle.name.replace(/\s+/g, '_');
-  const status = stepResult.result.passed ? 'PASSED' : 'FAILED';
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const filename = `${scenarioName}_${stepText}_${status}_${timestamp}.png`;
+  const filename = `${scenarioName}_${stepText}_${timestamp}.png`;
   const filepath = path.join('./screenshots', filename);
 
   if (!fs.existsSync('./screenshots')) {
