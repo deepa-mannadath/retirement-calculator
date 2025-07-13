@@ -127,43 +127,6 @@ class RetirementCalculatorPage {
         expect(overrideVisible).toBe(expectedVisible);
     }
     // Fill all fields with provided test data
-    async fillAllFields(data) {
-        await this.currentAgeInput.setValue(data.currentAge);
-        await this.retirementAgeInput.setValue(data.retirementAge);
-
-        await this.enterMaskedValue(this.incomeInput, data.income);
-        await this.enterMaskedValue(this.totalSavingsInput, data.totalSavings);
-        await this.enterMaskedValue(this.spouseIncomeInput, data.spouseIncome);
-
-        await this.annualSavingsInput.setValue(data.annualSavings);
-        await this.savingsIncreaseRateInput.setValue(data.savingsRate);
-
-        if (data.socialSecurityEnabled && !(await this.socialSecurityYesRadio.isSelected())) {
-            await this.yesSocialLabel.click();
-        }
-
-        await this.overrideInput.setValue(data.socialSecurityOverride);
-    }
-    //Method for changing Default Calculator Values
-    async changeDefaultCalculatorValues(data) {
-        await this.adjustDefaultsLink.scrollIntoView();
-        await this.adjustDefaultsLink.click();
-        await this.defaultModal.waitForDisplayed({ timeout: 10000 });
-
-        await this.additionalIncomeInput.clearValue();
-        await this.additionalIncomeInput.setValue(data.additionalIncome);
-
-        await this.retirementDurationInput.setValue(data.retirementDuration);
-        await this.annualRetirementIncomeInput.setValue(data.annualRetirementIncome);
-        await this.preRetirementRoiInput.setValue(data.preRetirementRoi);
-        await this.postRetirementRoiInput.setValue(data.postRetirementRoi);
-
-        await this.saveChangesButton.scrollIntoView();
-        await this.saveChangesButton.waitForDisplayed({ timeout: 10000 });
-        await this.saveChangesButton.waitForClickable({ timeout: 10000 });
-        await this.saveChangesButton.click();
-    }
-    //Fill all calculator fields
 
     async fillAllFields(data = testData.allFields) {
         await this.currentAgeInput.setValue(data.currentAge);
@@ -180,9 +143,27 @@ class RetirementCalculatorPage {
         if (!(await this.socialSecurityYesRadio.isSelected())) {
             await this.yesSocialLabel.click();
         }
+        await this.enterMaskedValue(this.socialSecurityOverrideInput, data.socialSecurityOverride);
 
-        await this.socialSecurityOverrideInput.setValue(data.socialSecurityOverride);
     }
+
+    //Method for changing Default Calculator Values
+    async changeDefaultCalculatorValues(data) {
+        await this.adjustDefaultsLink.scrollIntoView();
+        await this.adjustDefaultsLink.click();
+        await this.defaultModal.waitForDisplayed({ timeout: 10000 });
+
+        await this.enterMaskedValue(this.additionalIncomeInput, data.additionalIncome);
+        await this.retirementDurationInput.setValue(data.retirementDuration);
+        await this.annualRetirementIncomeInput.setValue(data.annualRetirementIncome);
+        await this.preRetirementRoiInput.setValue(data.preRetirementRoi);
+        await this.postRetirementRoiInput.setValue(data.postRetirementRoi);
+        await this.saveChangesButton.scrollIntoView();
+        await this.saveChangesButton.waitForDisplayed({ timeout: 10000 });
+        await this.saveChangesButton.waitForClickable({ timeout: 10000 });
+        await this.saveChangesButton.click();
+    }
+    
 }
 
 module.exports = new RetirementCalculatorPage();
