@@ -15,7 +15,7 @@ AfterStep(async function (stepResult) {
   }
 
   await browser.saveScreenshot(filepath);
-  console.log(`📸 Screenshot captured: ${filepath}`);
+  console.log(`Screenshot captured: ${filepath}`);
 
   this.__currentStepIndex = (this.__currentStepIndex || 0) + 1;
 });
